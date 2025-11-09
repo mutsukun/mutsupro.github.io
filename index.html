@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head prefix="og:http://ogp.me/ns#">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta name="keyword" content="Midnight,Report,徹夜報告書,ホラーゲーム,ゲーム実況,むつむつ">
+        <meta name="description" content="indieホラーゲーム「Midnight Report」「徹夜報告書」などを手掛ける制作者による公式サイト。ゲームの新着情報や開発進捗などを順次公開中！">
+        <title>むつむつプロジェクト - ソロインディーホラーゲーム開発</title>
+        <link rel="stylesheet" href="./style.css">
+        <link rel="icon" type="image/png" href="./images/Merry_icon.png">
+        <link rel="icon" href="images/MutsuPRO_icon.ico">
+        <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=New+Tegomin&family=Rock+3D&display=swap" rel="stylesheet">
+    </head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZL7MMXNHHX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-ZL7MMXNHHX');
+    </script>
+    <body>
+        <!-- 背景動画 -->
+        <video autoplay muted loop playsinline id="backgroundVideo">
+            <source src="videos/kyosho_trailer_earlyaccess.mp4" type="video/mp4">
+            <!-- ブラウザが対応していない場合のメッセージ -->
+            お使いのブラウザは動画タグに対応していません。
+        </video>
+        <header>
+            <div class="title_banner">むつむつプロジェクト</div>
+             <!--Twitter:@mutsumutsu_dev-->
+            <meta property="og:url" content="https://mutsupro.com/" />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="むつむつプロジェクト - ソロインディーホラーゲーム開発" />
+            <meta property="og:description" content="indieホラーゲーム「Midnight Report」「徹夜報告書」などを手掛ける制作者による公式サイト。ゲームの新着情報や開発進捗などを順次公開中！" />
+            <meta property="og:site_name" content="「むつむつプロジェクト」Official Site" />
+            <meta property="og:image" content="./images/Merry_icon.png" />
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:site" content="@mutsumutsu_dev" />
+            <!--hamburger menu-->
+            <span class="nav_toggle">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+            <nav class="nav">
+                <ul class="nav_menu_ul">
+                    <li class="nav_menu_li"><a href="https://mutsupro.com">TOP</a></li>
+                    <!--<li class="nav_menu_li"><a href="#news_id">NEWS</a></li>-->
+                    <!--<li class="nav_menu_li"><a href="#blog_id">BLOG</a></li>-->
+                    <li class="nav_menu_li"><a href="#kyosho">GAME: 虚衝</a></li>
+                    <li class="nav_menu_li"><a href="#MRv1027">GAME: 徹夜報告書</a></li>
+                    <li class="nav_menu_li"><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>              
+        </header>
+        <div class="title_image">
+            <img id="title_image_id" src="./images/kyosho_webtitlelog.png" alt="ブランド画像が表示される予定枠です．" height="720px" width="1280px">
+            <!--<pre class="high_z_order">©むつむつプロジェクト</pre>-->
+        </div>
+
+        <div class="main">
+            <div class="letter">
+                <p></p>
+                <!-- 完全版 -->
+                <div class="border_box" id="kyosho">
+                    <img src="./images/kyosho_banner.png" alt="虚衝banner" id="kyosho_banner">
+                    <a href="https://store.steampowered.com/app/3235530/__Kyosho/" class="Redbtn">Steam Store</a>
+                </div>
+                <div id="MRv1027" class="border_box">
+                    <!--
+                    <h1 id="game_id">☞　　制作ホラーゲーム　　☜</h1>
+                    <h1>徹夜報告書 | Midnight Report</h1>
+                    -->
+                    <img src="./images/MR_intro.png" alt="徹夜報告書 | Midnight Report (完全版)" id="MRv101_image">
+                    <p>
+                        レポート課題に追われる学生の悲劇体験。<br>
+                        徹夜作業による幻覚をコンセプトとした和製サバイバルホラーゲーム。<br><br>
+                        <a href="https://store.steampowered.com/app/2054060/__Midnight_Report/" class="Redbtn">Steam Store</a>
+                        <a href="https://store-jp.nintendo.com/item/software/D70010000081010" class="Redbtn">Nintendo Store</a>
+                    </p>
+                </div>
+            </div>
+
+            <footer>
+                ©むつむつプロジェクト<br>
+                <a id="contact">お問い合わせ: mutsumutsu_dev◯outlook.jp</a><br>（◯は@に置き換えてください）<br>
+            </footer>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,428 @@
+/* Reset CSS */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  vertical-align:baseline;
+  background:transparent;
+}
+
+/*style for ALL*/
+header {
+    position: fixed;
+    top: 0;   /*header position*/
+    left: 0;  /*header position*/
+    display: flex;  
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(29, 29, 29);
+    border-bottom: 3px double rgba(46, 46, 46, 0.384);
+    color: white;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    align-items: center;
+    z-index: 1;   /*install front*/
+    /*box-shadow: 0 10px 25px 0 rgb(0, 0, 0);*/
+    /* text-shadow:aquamarine 1px 0 5px; */
+  }
+
+h1 {
+  padding: 20px;
+  font-size: large;
+}
+
+h4 {
+  text-align: center;
+}
+
+iframe{
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+body {
+    background-color: rgb(7, 7, 7);
+    font-family: 'New Tegomin', serif;
+}
+
+/* 背景動画のスタイル */
+#backgroundVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 動画を画面全体にフィットさせる */
+  z-index: -1; /* 背面に配置 */
+  opacity: 0.7; /* 透明度を設定してコンテンツとのコントラストを確保 */
+  pointer-events: none; /* 背景の動画をクリックできないようにする */
+}
+
+  .title_banner{
+    font-family: 'Rock 3D', cursive;
+    font-size: 25px;
+  }
+
+/* hamburger */
+  .nav_toggle {
+    margin: 0 0 0 auto;
+    display: block;
+    position: relative;
+    width: 1.75rem;
+    height: 1.5rem;
+  }
+  .nav_toggle i {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: #b5b5b5;
+    position: absolute;
+    transition: transform .5s, opacity .5s;
+  }
+  .nav_toggle i:nth-child(1) {
+    top: 0;
+  }
+  .nav_toggle i:nth-child(2) {
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  .nav_toggle i:nth-child(3) {
+    bottom: 0;
+  }
+  .nav_toggle.show i:nth-child(1) {
+    transform: translateY(10px) rotate(-45deg);
+  }
+  .nav_toggle.show i:nth-child(2) {
+    opacity: 0;
+  }
+  .nav_toggle.show i:nth-child(3) {
+    transform: translateY(-12px) rotate(45deg);
+  }
+  .nav {
+    position: fixed;
+    top: 3rem;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    padding: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s, visibility .5s;
+    background-color: #000000e8;
+    font-size:x-large;
+    text-align: left;
+  }
+  .nav_menu_ul {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .nav_menu_li {
+    margin-bottom: 10px;
+  }
+  .nav.show {
+    opacity: 1;
+    visibility: visible;
+  }
+    
+ul {
+  list-style: none;
+  text-decoration: none;
+}
+
+  .border_box {
+    color: #e3e3e3;
+    background-color: rgba(18, 18, 18, 0.959);
+    /*margin-top: 30px;*/
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+    /*box-shadow: 10px 15px 0px 0px rgb(66, 15, 15);*/
+    /*border-radius: 5px;*/
+    /*border: solid 2px;*/
+    /*border-color: rgb(192, 0, 0);*/
+  }
+
+  .catch_image {
+    opacity: 0;
+    background-position: center;
+    background-image: url("./images/MidnightReport_Poster.png");
+    background-size: cover;
+    height: 800px;
+    animation: fadeIn_CatchImage 2.5s ease 1s 1 normal;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes fadeIn_CatchImage{
+    0% {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);    
+    }
+  }
+
+  .main {
+    height: 100vw;
+    text-align: center;
+    /*background-color: black;*/
+  }
+
+  .title_image {
+    opacity: 0;
+    padding: 10px;
+    /*background-color: rgba(56, 56, 56, 0.678);*/
+    text-align: center;
+    color: azure;
+    animation: fadeIn_TitleImage 1s ease 0.3s 1 normal;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes fadeIn_TitleImage{
+    0% {opacity: 0}
+    100% {opacity: 1}
+  }
+
+  #title_image_id {
+    margin-top: 50px;
+    margin-bottom: 10px;
+
+    opacity: 0;
+    background-position: center;
+    animation: fadeIn_IconImage 2.5s ease 1s 1 normal;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes fadeIn_IconImage{
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);    
+    }
+  }
+
+  .yellow {
+    color: yellow;
+  }
+
+  .main .letter {
+    /*margin-left: 150px;
+    margin-right: 150px;*/
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding-bottom: 10px;
+    /*padding: 50px;*/
+    height: auto;
+    width: auto;
+    /*background-color: rgba(59, 59, 59, 0.8);*/
+    color: rgb(255, 255, 255);
+  }
+
+  .left {
+    text-align:left;
+  }
+
+  #kyosho_banner {
+    width: 100%;
+  }
+
+  #MRv101_image {
+    width: 100%;
+    /*height: 300px;*/
+  }
+   
+footer {
+  text-align: center;
+  /*bottom: 0;*/
+  width: 100%;
+  background-color: rgb(29, 29, 29);
+  color: white;
+  font-size: 12px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+p {
+  font-size: 20px;
+  margin: 10px;
+  margin-bottom: 20px;
+}
+
+  .Redbtn {
+    display: block;
+    width: 250px;
+    height: 35px;
+    text-align: center;
+    font-size: large;
+    position: sticky;
+    right: 0;
+    left: 0;
+    margin: auto;
+    color: rgb(255, 0, 0);
+    background-color:rgba(0, 0, 0, 0.241);
+    border: double 1px;
+    border-radius:5px;
+    border-color: rgb(255, 0, 0);
+    /* margin:40px; */
+    padding:3px 15px;
+    text-decoration:none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .sien {
+    margin: 40px;
+    position: sticky;
+  }
+
+
+  .high_z_order{
+    z-index: 10;
+    font-family: 'New Tegomin', serif;
+  }
+
+dl{
+  margin-left: auto;
+  margin-right: auto;
+  width:500px;
+}
+
+dt{
+  border-bottom:1px solid #ccc;
+  float:left;
+  padding:10px 5px;
+}
+
+dd{
+  border-bottom:1px solid #ccc;
+  margin-left:50px;
+  padding:10px 5px;
+}
+
+a{
+  text-decoration: none;
+  color:aliceblue;
+}
+
+/*style for SmartPhone*/
+@media screen and (max-width:480px) {
+
+img {
+  width :100%;
+  height: 100%;
+}
+
+#title_image_id {
+  margin-top: 50px;
+  margin-bottom: 10px;
+  height: 400px;
+  margin: auto;
+  object-fit: cover;
+
+  opacity: 0;
+  background-position: center;
+  animation: fadeIn_IconImage 2.5s ease 1s 1 normal;
+  animation-fill-mode: forwards;
+}
+  
+   #MRv101_image {
+    height: auto;
+  }
+
+  .main {
+    margin-top: 30px;
+    /*margin-bottom: 30px;*/
+    /*padding: 10px;*/
+    height: auto;
+    width: auto;
+    /*background-color: rgba(59, 59, 59, 0.8);*/
+    color: rgb(255, 255, 255);
+  }
+  
+    .catch_image {
+    background-position: center;
+    background-image: url("./images/MidnightReport_Poster.png");
+    background-size: 100%;
+      height: auto
+  }
+  
+    .main .letter {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /*padding: 5px;*/
+    height: auto;
+    width: auto;
+    /*background-color: rgba(59, 59, 59, 0.8);*/
+    color: rgb(255, 255, 255);
+  }
+  
+  /* .Redbtn {
+    color: white;
+    background-color:rgba(155, 0, 0, 0.644);
+    border-radius:5px;
+    margin:0 20px;
+    padding:0px 5px;
+    text-decoration:none;
+  } */
+
+dl{
+  text-align: center;
+  width:80%;
+}
+
+dt{
+  border-bottom:1px solid #ccc;
+  float:left;
+  /* padding:2px 0px;
+  font-size: 1.1em; */
+}
+
+dd{
+  border-bottom:1px solid #ccc;
+  margin-left:1px;
+  padding:2px 1px;
+  font-size: 1.0rem;
+}
+
+/*font size adjustment*/
+p{
+  font-size: 1.0rem;
+}
+
+h1{
+  margin: 0px;
+  font-size: 1.3rem;
+}
+
+h2{
+  font-size: 1.2rem;
+}
+
+a{
+  color: aliceblue;
+  text-decoration: none;
+}
+
+
+}

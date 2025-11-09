@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <style>
+            body{background-color: black; color: aliceblue; text-align: center;}
+            h4{color: yellow;}
+            li{margin: 5px; list-style-type: none;}
+        </style>
+		<h1>『徹夜報告書』レポート課題のダウンロード方法（for MacOS,Windows）</h1>
+        <ol>
+        <li>①ターミナル上（コマンドプロンプト，ターミナル，iTerm等）で以下のコマンドを実行して，レポートの雛形画像(.png)をダウンロードしてください．<br>
+        　　（ファイルは公式サイト(https://mutsudev.herokuapp.com/)のドメイン配下にあります．）<br>
+        <h3></h3>
+        <h4>curl https://mutsudev.herokuapp.com/contents/chapter_thinking_old.png --output "./Downloads/MidnightReport_report.png"<h4><br>
+        <h3></h3>
+        </li>
+        
+        <li>
+        ②ダウンロードフォルダ（~/Downloads）を確認してみてください．成功していれば MidnightReport_report.png があるはずです．<br>
+        　　うまくいかない場合は３．へ．<br>
+        </li>
+        
+        <li>
+        ③以下のコマンドを実行することで，直下にDownloadsフォルダが生成され，その中に MidnightReport_report.png が含まれます．<br>
+        <h3></h3>
+        <h4>curl https://mutsudev.herokuapp.com/contents/chapter_thinking_old.png --create-dirs --output "./Downloads/MidnightReport_report.png"</h4><br>
+        <h3></h3>
+        
+        　　　それでもうまくいかない場合は，お手数ですが，公式がTwitterで投稿した画像を使うか，ブラウザから直接以下のURL<br>
+        　　「https://mutsudev.herokuapp.com/contents/chapter_thinking_old.png」 をご覧ください．<br>
+    </li>
+        </ol>
+        <h1></h1>
+        <!-- ソースが汚いのは内緒ですよ（） -->
+        ＊ダウンロードした画像は記載欄を編集して，SNS等インターネット上に投稿いただけます．<br>
+        ＊以上の手順はこちら側で動作を確認済みですが，むつむつプロジェクトは記載の操作における一切の責任を負いませんので，承知の上で実行ください．
+    </body>
+</html>
