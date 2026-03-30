@@ -1,96 +1,189 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
     <head prefix="og:http://ogp.me/ns#">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <meta name="keyword" content="Midnight,Report,徹夜報告書,ホラーゲーム,ゲーム実況,むつむつ">
-        <meta name="description" content="indieホラーゲーム「Midnight Report」「徹夜報告書」などを手掛ける制作者による公式サイト。ゲームの新着情報や開発進捗などを順次公開中！">
-        <title>むつむつプロジェクト - ソロインディーホラーゲーム開発</title>
+        <meta name="keywords" content="Midnight Report,徹夜報告書,ホラーゲーム,ゲーム実況,むつむつ,虚衝,Kyosho">
+        <meta name="description" content="インディホラーを手掛ける制作者による公式サイト。ゲームの新着情報や開発進捗などを順次公開中！">
+        <title>むつむつプロジェクト</title>
+
+        <!-- OGP -->
+        <meta property="og:url" content="https://mutsupro.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="むつむつプロジェクト" />
+        <meta property="og:description" content="インディホラーを手掛ける制作者による公式サイト。ゲームの新着情報や開発進捗などを順次公開中！" />
+        <meta property="og:site_name" content="「むつむつプロジェクト」Official Site" />
+        <meta property="og:image" content="./images/Merry_icon.png" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@mutsumutsu_dev" />
+
         <link rel="stylesheet" href="./style.css">
         <link rel="icon" type="image/png" href="./images/Merry_icon.png">
         <link rel="icon" href="images/MutsuPRO_icon.ico">
-        <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
         <!-- fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=New+Tegomin&family=Rock+3D&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=New+Tegomin&family=Rock+3D&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+
+        <!-- Google tag -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZL7MMXNHHX"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-ZL7MMXNHHX');
+        </script>
     </head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZL7MMXNHHX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-ZL7MMXNHHX');
-    </script>
     <body>
-        <!-- 背景動画 -->
+
+        <!-- 背景動画 
         <video autoplay muted loop playsinline id="backgroundVideo">
             <source src="videos/kyosho_trailer_earlyaccess.mp4" type="video/mp4">
-            <!-- ブラウザが対応していない場合のメッセージ -->
-            お使いのブラウザは動画タグに対応していません。
-        </video>
-        <header>
-            <div class="title_banner">むつむつプロジェクト</div>
-             <!--Twitter:@mutsumutsu_dev-->
-            <meta property="og:url" content="https://mutsupro.com/" />
-            <meta property="og:type" content="website" />
-            <meta property="og:title" content="むつむつプロジェクト - ソロインディーホラーゲーム開発" />
-            <meta property="og:description" content="indieホラーゲーム「Midnight Report」「徹夜報告書」などを手掛ける制作者による公式サイト。ゲームの新着情報や開発進捗などを順次公開中！" />
-            <meta property="og:site_name" content="「むつむつプロジェクト」Official Site" />
-            <meta property="og:image" content="./images/Merry_icon.png" />
-            <meta name="twitter:card" content="summary" />
-            <meta name="twitter:site" content="@mutsumutsu_dev" />
-            <!--hamburger menu-->
-            <span class="nav_toggle">
-                <i></i>
-                <i></i>
-                <i></i>
-            </span>
-            <nav class="nav">
+        </video>-->
+        <!-- ノイズオーバーレイ -->
+        <div class="noise-overlay"></div>
+        <!-- ビネット -->
+        <div class="vignette"></div>
+
+        <!-- ヘッダー -->
+        <header id="site-header">
+            <a href="https://mutsupro.com" class="title_banner">
+                <span class="title_banner_main">むつむつプロジェクト</span>
+                <span class="title_banner_sub">INDIE HORROR CREATION</span>
+            </a>
+
+            <!-- ハンバーガーメニュー -->
+            <button class="nav_toggle" aria-label="メニュー" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav" aria-label="メインナビゲーション">
                 <ul class="nav_menu_ul">
-                    <li class="nav_menu_li"><a href="https://mutsupro.com">TOP</a></li>
-                    <!--<li class="nav_menu_li"><a href="#news_id">NEWS</a></li>-->
-                    <!--<li class="nav_menu_li"><a href="#blog_id">BLOG</a></li>-->
-                    <li class="nav_menu_li"><a href="#kyosho">GAME: 虚衝</a></li>
-                    <li class="nav_menu_li"><a href="#MRv1027">GAME: 徹夜報告書</a></li>
-                    <li class="nav_menu_li"><a href="#contact">CONTACT</a></li>
+                    <li class="nav_menu_li"><a href="https://mutsupro.com" class="nav_link">TOP</a></li>
+                    <li class="nav_menu_li"><a href="#kyosho" class="nav_link">虚衝</a></li>
+                    <li class="nav_menu_li"><a href="#MRv1027" class="nav_link">徹夜報告書</a></li>
+                    <!--<li class="nav_menu_li"><a href="./portfolio.html" class="nav_link">PORTFOLIO</a></li>-->
+                    <li class="nav_menu_li"><a href="#contact" class="nav_link">CONTACT</a></li>
                 </ul>
-            </nav>              
+            </nav>
         </header>
-        <div class="title_image">
-            <img id="title_image_id" src="./images/kyosho_webtitlelog.png" alt="ブランド画像が表示される予定枠です．" height="720px" width="1280px">
-            <!--<pre class="high_z_order">©むつむつプロジェクト</pre>-->
-        </div>
 
-        <div class="main">
-            <div class="letter">
-                <p></p>
-                <!-- 完全版 -->
-                <div class="border_box" id="kyosho">
-                    <img src="./images/kyosho_banner.png" alt="虚衝banner" id="kyosho_banner">
-                    <a href="https://store.steampowered.com/app/3235530/__Kyosho/" class="Redbtn">Steam Store</a>
-                </div>
-                <div id="MRv1027" class="border_box">
-                    <!--
-                    <h1 id="game_id">☞　　制作ホラーゲーム　　☜</h1>
-                    <h1>徹夜報告書 | Midnight Report</h1>
-                    -->
-                    <img src="./images/MR_intro.png" alt="徹夜報告書 | Midnight Report (完全版)" id="MRv101_image">
-                    <p>
-                        レポート課題に追われる学生の悲劇体験。<br>
-                        徹夜作業による幻覚をコンセプトとした和製サバイバルホラーゲーム。<br><br>
-                        <a href="https://store.steampowered.com/app/2054060/__Midnight_Report/" class="Redbtn">Steam Store</a>
-                        <a href="https://store-jp.nintendo.com/item/software/D70010000081010" class="Redbtn">Nintendo Store</a>
-                    </p>
-                </div>
+        <!-- ヒーローセクション -->
+        <section class="hero">
+            <div class="hero_inner">
+                <img id="title_image_id"
+                     src="./images/keyvisual_hakoatama_1920x1080.jpg"
+                     alt="虚衝 タイトルロゴ">
+                <p class="hero_tagline">最新作 ハコアタマ<br>鋭意開発中</p>
+                <a href="#kyosho" class="scroll_hint" aria-label="下へスクロール">
+                    <span class="scroll_hint_line"></span>
+                    <span class="scroll_hint_text">SCROLL</span>
+                </a>
             </div>
+        </section>
 
-            <footer>
-                ©むつむつプロジェクト<br>
-                <a id="contact">お問い合わせ: mutsumutsu_dev◯outlook.jp</a><br>（◯は@に置き換えてください）<br>
-            </footer>
-        </div>
-        <script src="script.js"></script>
+        <!-- メインコンテンツ -->
+        <main class="main">
+
+            <!-- 虚衝 セクション -->
+            <section class="game_section reveal" id="kyosho">
+                <div class="section_label">LATEST WORK</div>
+                <div class="game_card">
+                    <div class="game_card_image">
+                        <img src="./images/kyosho_withoccults_thumbnail_1920x1080.png" alt="虚衝 banner">
+                    </div>
+                    <div class="game_card_body">
+                        <div class="game_description"></div>
+                            "緊張"と"解放感"を体現する一撃必殺のカケヒキ。押し寄せる落武者を斬り伏せながら、インベントリを駆使した謎解きで武家屋敷の秘密に迫れ。 呪われた絶体絶命の屋敷で、あなたは生き残り真実に辿り着けるか――？
+                        </div>
+                        <div class="game_store_links">
+                            <a href="https://store.steampowered.com/app/3235530/__Kyosho/" class="store_btn steam_btn">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.606 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.455 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.252 0-2.265-1.014-2.265-2.265z"/></svg>
+                                Steam Store
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 徹夜報告書 セクション -->
+            <section class="game_section reveal" id="MRv1027">
+                <div class="section_label">PREVIOUS WORK</div>
+                <div class="game_card">
+                    <div class="game_card_image">
+                        <img src="./images/MR_intro.png" alt="徹夜報告書 | Midnight Report (完全版)">
+                    </div>
+                    <div class="game_card_body">
+                        <p class="game_description">
+                            レポート課題に追われる学生の悲劇体験。徹夜作業による幻覚をコンセプトとした和製サバイバルホラーゲーム。
+                        </p>
+                        <div class="game_store_links">
+                            <a href="https://store.steampowered.com/app/2054060/__Midnight_Report/" class="store_btn steam_btn">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.606 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.455 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.252 0-2.265-1.014-2.265-2.265z"/></svg>
+                                Steam Store
+                            </a>
+                            <a href="https://store-jp.nintendo.com/item/software/D70010000081010" class="store_btn nintendo_btn">
+                                
+                                Nintendo Store
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- フッター -->
+        <footer id="contact">
+            <div class="footer_inner">
+                <p class="footer_brand">むつむつプロジェクト</p>
+                <p class="footer_contact">
+                    お問い合わせ:&nbsp;
+                    <span class="footer_email">mutsumutsu_dev◯outlook.jp</span>
+                    <span class="footer_email_note">（◯は @ に置き換えてください）</span>
+                </p>
+                <p class="footer_copy">©むつむつプロジェクト</p>
+            </div>
+        </footer>
+
+        <script>
+        // ハンバーガーメニュー
+        const toggle = document.querySelector('.nav_toggle');
+        const nav = document.querySelector('.nav');
+        toggle.addEventListener('click', () => {
+            const isOpen = toggle.classList.toggle('show');
+            nav.classList.toggle('show');
+            toggle.setAttribute('aria-expanded', isOpen);
+        });
+        // ナビリンクをクリックしたら閉じる
+        document.querySelectorAll('.nav_link').forEach(link => {
+            link.addEventListener('click', () => {
+                toggle.classList.remove('show');
+                nav.classList.remove('show');
+                toggle.setAttribute('aria-expanded', false);
+            });
+        });
+
+        // スクロールでヘッダーに影を追加
+        const header = document.getElementById('site-header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 30);
+        });
+
+        // スクロールリビール
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        revealEls.forEach(el => observer.observe(el));
+        </script>
     </body>
 </html>
