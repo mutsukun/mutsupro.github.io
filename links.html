@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="むつむつ — リンク一覧ページ">
+    <title>LINKS — むつむつ / むつむつプロジェクト</title>
+    <link rel="icon" type="image/png" href="./images/Merry_icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=New+Tegomin&family=Rock+3D&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+    /* ── Variables ── */
+    :root {
+        --clr-bg:         #060608;
+        --clr-surface:    rgba(12, 11, 15, 0.90);
+        --clr-accent:     #c0002a;
+        --clr-accent-dim: rgba(192, 0, 42, 0.18);
+        --clr-text:       #ddd8d0;
+        --clr-text-muted: #6e6a65;
+        --clr-border:     rgba(192, 0, 42, 0.28);
+        --font-display:   'Rock 3D', cursive;
+        --font-body:      'Shippori Mincho', 'New Tegomin', serif;
+        --ease-horror:    cubic-bezier(.22, .61, .36, 1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+        background-color: var(--clr-bg);
+        color: var(--clr-text);
+        font-family: var(--font-body);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ── Background effects ── */
+    .noise-overlay {
+        position: fixed; inset: 0; z-index: 0; pointer-events: none;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        background-size: 200px;
+        animation: noise-shift 0.15s steps(2) infinite;
+    }
+    @keyframes noise-shift {
+        0%   { background-position: 0 0; }
+        50%  { background-position: 30px -20px; }
+        100% { background-position: -10px 10px; }
+    }
+    .bg-glow {
+        position: fixed; inset: 0; z-index: 0; pointer-events: none;
+        background: radial-gradient(ellipse 60% 50% at 50% 0%,
+            rgba(192, 0, 42, 0.10) 0%, transparent 65%);
+    }
+
+    /* ── Page wrapper ── */
+    .links-page {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 520px;
+        padding: clamp(48px, 8vh, 80px) clamp(20px, 5vw, 40px) clamp(48px, 8vh, 72px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    /* ── Back link ── */
+    .back-link {
+        align-self: flex-start;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        color: var(--clr-text-muted);
+        margin-bottom: 36px;
+        transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--clr-text); }
+    .back-link svg { flex-shrink: 0; }
+
+    /* ── Profile ── */
+    .profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 12px;
+        animation: profileReveal 0.9s var(--ease-horror) 0.1s both;
+    }
+    @keyframes profileReveal {
+        from { opacity: 0; transform: translateY(16px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .profile__avatar {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid var(--clr-border);
+        background: #0d0d0f;
+        position: relative;
+    }
+    .profile__avatar::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px var(--clr-accent-dim);
+        transition: box-shadow 0.4s;
+    }
+    .profile__avatar:hover::after {
+        box-shadow: 0 0 0 6px rgba(192,0,42,0.35);
+    }
+    .profile__avatar img {
+        width: 100%; height: 100%; object-fit: cover;
+    }
+
+    .profile__name {
+        font-family: var(--font-display);
+        font-size: clamp(22px, 5vw, 28px);
+        color: var(--clr-text);
+        letter-spacing: 0.06em;
+        line-height: 1;
+    }
+    .profile__role {
+        font-size: 11px;
+        letter-spacing: 0.25em;
+        color: var(--clr-accent);
+        text-transform: uppercase;
+    }
+
+    /* ── Description ── */
+    .profile__desc {
+        font-size: 13px;
+        color: var(--clr-text-muted);
+        letter-spacing: 0.1em;
+        text-align: center;
+        line-height: 1.8;
+        padding: 12px 16px;
+        border: 1px dashed rgba(255,255,255,0.08);
+        border-radius: 3px;
+        width: 100%;
+        margin-bottom: 32px;
+        animation: profileReveal 0.9s var(--ease-horror) 0.25s both;
+    }
+    .profile__desc span {
+        color: var(--clr-text);
+    }
+
+    /* ── Divider ── */
+    .links-divider {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+        animation: profileReveal 0.9s var(--ease-horror) 0.35s both;
+    }
+    .links-divider::before,
+    .links-divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--clr-border), transparent);
+    }
+    .links-divider__label {
+        font-size: 9px;
+        letter-spacing: 0.4em;
+        color: var(--clr-text-muted);
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    /* ── Link list ── */
+    .links-list {
+        list-style: none;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* ── Link item ── */
+    .link-item {
+        opacity: 0;
+        transform: translateY(12px);
+        animation: linkReveal 0.5s var(--ease-horror) both;
+    }
+    /* stagger delay は JS で付与 */
+    @keyframes linkReveal {
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .link-item a {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 18px;
+        background: var(--clr-surface);
+        border: 1px solid rgba(255,255,255,0.07);
+        border-radius: 4px;
+        transition: border-color 0.25s, background 0.25s, transform 0.2s, box-shadow 0.3s;
+        position: relative;
+        overflow: hidden;
+    }
+    .link-item a::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 0; bottom: 0;
+        width: 3px;
+        background: var(--clr-accent);
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform 0.3s var(--ease-horror);
+    }
+    .link-item a:hover::before { transform: scaleY(1); }
+    .link-item a:hover {
+        border-color: var(--clr-border);
+        background: rgba(192,0,42,0.05);
+        transform: translateX(4px);
+        box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    }
+
+    /* アイコン枠 */
+    .link-item__icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        color: var(--clr-text-muted);
+        transition: color 0.25s, background 0.25s;
+    }
+    .link-item a:hover .link-item__icon {
+        color: var(--clr-text);
+        background: rgba(192,0,42,0.15);
+        border-color: var(--clr-border);
+    }
+
+    /* テキスト */
+    .link-item__text {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        flex: 1;
+        min-width: 0;
+    }
+    .link-item__label {
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        color: var(--clr-text);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .link-item__sub {
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        color: var(--clr-text-muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* 矢印 */
+    .link-item__arrow {
+        color: var(--clr-text-muted);
+        flex-shrink: 0;
+        transition: color 0.25s, transform 0.25s;
+    }
+    .link-item a:hover .link-item__arrow {
+        color: var(--clr-accent);
+        transform: translateX(3px);
+    }
+
+    /* セクション見出し（グループ分け） */
+    .links-group-label {
+        width: 100%;
+        font-size: 9px;
+        letter-spacing: 0.4em;
+        color: var(--clr-text-muted);
+        text-transform: uppercase;
+        margin: 20px 0 8px;
+        padding-left: 4px;
+        opacity: 0;
+        animation: profileReveal 0.5s var(--ease-horror) 0.4s both;
+    }
+
+    /* ── Footer ── */
+    .links-footer {
+        margin-top: 40px;
+        font-size: 11px;
+        color: var(--clr-text-muted);
+        letter-spacing: 0.15em;
+        text-align: center;
+        opacity: 0;
+        animation: profileReveal 0.6s var(--ease-horror) 1s both;
+    }
+    .links-footer a {
+        color: var(--clr-accent);
+        border-bottom: 1px solid var(--clr-accent-dim);
+        transition: border-color 0.2s;
+    }
+    .links-footer a:hover { border-color: var(--clr-accent); }
+    </style>
+</head>
+<body>
+    <div class="noise-overlay"></div>
+    <div class="bg-glow"></div>
+
+    <div class="links-page">
+
+        <!-- 戻るリンク -->
+        <a href="./index.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            むつむつプロジェクト TOP
+        </a>
+
+        <!-- プロフィール -->
+        <div class="profile">
+            <div class="profile__avatar">
+                <img src="./images/Icon-onlyFace-white.jpg" alt="むつむつ">
+            </div>
+            <p class="profile__name">むつむつ</p>
+            <p class="profile__role">Indie Horror Game Developer</p>
+        </div>
+
+        <!-- 説明文 -->
+        <p class="profile__desc">
+            <span>リンク置き場</span><br>
+            ゲーム購入・SNS・お問い合わせ先など置いてます
+        </p>
+
+        <!-- ─── SNS ─────────────────── -->
+        <p class="links-group-label">SNS</p>
+        <ul class="links-list">
+
+            <li class="link-item">
+                <a href="https://twitter.com/mutsumutsu_dev" target="_blank" rel="noopener">
+                    <span class="link-item__icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </span>
+                    <span class="link-item__text">
+                        <span class="link-item__label">X</span>
+                        <span class="link-item__sub">作者むつむつのSNS</span>
+                    </span>
+                    <svg class="link-item__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </li>
+
+        </ul>
+
+        <!-- ─── GAMES ─────────────────── -->
+        <p class="links-group-label">GAMES</p>
+        <ul class="links-list">
+
+            <li class="link-item">
+                <a href="https://store.steampowered.com/app/3235530/__Kyosho/" target="_blank" rel="noopener">
+                    <span class="link-item__icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.606 0 11.979 0z"/></svg>
+                    </span>
+                    <span class="link-item__text">
+                        <span class="link-item__label">虚衝 - Kyosho</span>
+                        <span class="link-item__sub">Steamストアに遷移します</span>
+                    </span>
+                    <svg class="link-item__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </li>
+
+            <li class="link-item">
+                <a href="https://store.steampowered.com/app/2054060/__Midnight_Report/" target="_blank" rel="noopener">
+                    <span class="link-item__icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.606 0 11.979 0z"/></svg>
+                    </span>
+                    <span class="link-item__text">
+                        <span class="link-item__label">徹夜報告書 | Midnight Report</span>
+                        <span class="link-item__sub">Steamストアに遷移します</span>
+                    </span>
+                    <svg class="link-item__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </li>
+
+            <!--
+            <li class="link-item">
+                <a href="https://store-jp.nintendo.com/item/software/D70010000081010" target="_blank" rel="noopener">
+                    <span class="link-item__icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M9.13 0C4.085 0 0 4.085 0 9.13v5.74C0 19.915 4.085 24 9.13 24h5.74C19.915 24 24 19.915 24 14.87V9.13C24 4.085 19.915 0 14.87 0zm5.73 4.615a4.513 4.513 0 0 1 4.515 4.514 4.513 4.513 0 0 1-4.515 4.515 4.514 4.514 0 0 1-4.514-4.515 4.513 4.513 0 0 1 4.514-4.514zM7.2 7.26h2.34l3.45 5.69V7.26h2.16v9.48h-2.34L9.36 11.1v5.64H7.2zm-2.585.871a2.254 2.254 0 0 0-2.254 2.254 2.254 2.254 0 0 0 2.254 2.253 2.254 2.254 0 0 0 2.254-2.253 2.254 2.254 0 0 0-2.254-2.254z"/></svg>
+                    </span>
+                    <span class="link-item__text">
+                        <span class="link-item__label">徹夜報告書 | Midnight Report</span>
+                        <span class="link-item__sub">Nintendo Store</span>
+                    </span>
+                    <svg class="link-item__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </li>
+            -->
+
+        </ul>
+
+        <!-- ─── CONTACT ─────────────────── -->
+        <p class="links-group-label">CONTACT / OTHER</p>
+        <ul class="links-list">
+
+            <li class="link-item">
+                <a href="./portfolio.html">
+                    <span class="link-item__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                    </span>
+                    <span class="link-item__text">
+                        <span class="link-item__label">Portfolio</span>
+                        <span class="link-item__sub">メンバー紹介・制作実績</span>
+                    </span>
+                    <svg class="link-item__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </li>
+
+            <li class="link-item">
+                <a href="./index.html#contact">
+                    <span class="link-item__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </span>
+                    <span class="link-item__text">
+                        <span class="link-item__label">お問い合わせ</span>
+                        <span class="link-item__sub">取材、雑誌寄稿などのご依頼、ご連絡はこちらから</span>
+                    </span>
+                    <svg class="link-item__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </li>
+
+            <!-- ▼ リンク追加テンプレ（コメントアウト中）
+            <li class="link-item">
+                <a href="URL" target="_blank" rel="noopener">
+                    <span class="link-item__icon">
+                        SVGアイコンをここに
+                    </span>
+                    <span class="link-item__text">
+                        <span class="link-item__label">リンク名</span>
+                        <span class="link-item__sub">説明文</span>
+                    </span>
+                    <svg class="link-item__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </li>
+            -->
+
+        </ul>
+
+        <p class="links-footer">
+            <a href="https://mutsupro.com">むつむつプロジェクト</a> &nbsp;©むつむつプロジェクト
+        </p>
+    </div>
+
+    <script>
+    // リンクアイテムにstagger delayを付与
+    document.querySelectorAll('.link-item').forEach((el, i) => {
+        el.style.animationDelay = `${0.45 + i * 0.07}s`;
+    });
+    </script>
+</body>
+</html>

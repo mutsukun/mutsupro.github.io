@@ -1,0 +1,405 @@
+/* ===================================================
+   portfolio.css — ポートフォリオページ専用スタイル
+   style.css の変数・共通クラスを継承
+   =================================================== */
+
+.portfolio-page {
+    background-color: var(--clr-bg);
+    background-image: radial-gradient(
+        ellipse 80% 50% at 50% -10%,
+        rgba(192, 0, 42, 0.07) 0%,
+        transparent 70%
+    );
+}
+
+/* ══════════════════════════════════════
+   PAGE HERO
+══════════════════════════════════════ */
+.pf-hero {
+    padding-top: calc(var(--header-h) + clamp(48px, 8vw, 80px));
+    padding-bottom: clamp(32px, 5vw, 48px);
+    text-align: center;
+}
+.pf-hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    animation: fadeUp 0.9s var(--ease-horror) 0.2s both;
+}
+.pf-hero__label {
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: var(--clr-modern);
+    text-transform: uppercase;
+}
+.pf-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 7vw, 72px);
+    color: var(--clr-text);
+    letter-spacing: 0.06em;
+    line-height: 1;
+}
+.pf-hero__sub {
+    font-size: clamp(12px, 1.8vw, 14px);
+    color: var(--clr-text-muted);
+    letter-spacing: 0.2em;
+}
+.pf-hero__line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--clr-modern), transparent);
+    margin: 24px auto 0;
+    animation: fadeUp 0.9s var(--ease-horror) 0.5s both;
+}
+
+/* ══════════════════════════════════════
+   MAIN
+══════════════════════════════════════ */
+.pf-main {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 5vw, 48px) clamp(80px, 12vw, 140px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(48px, 8vw, 96px);
+}
+
+/* ══════════════════════════════════════
+   MEMBER CARD
+══════════════════════════════════════ */
+.member-card {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 0;
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border-modern);
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    transition: box-shadow 0.4s, border-color 0.4s;
+}
+.member-card:hover {
+    border-color: var(--clr-border-modern);
+    box-shadow: 0 0 48px rgba(192, 0, 42, 0.08), 0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* ── Aside（左カラム） ── */
+.member-card__aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: clamp(24px, 3vw, 36px) 20px;
+    background: rgba(0,0,0,0.25);
+    border-right: 1px solid var(--clr-border-modern);
+    text-align: center;
+}
+
+/* アイコン */
+.member-card__avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--clr-border-modern);
+    background: #0d0d0f;
+    flex-shrink: 0;
+}
+.member-card__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.member-card__avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 32px;
+    color: var(--clr-text-muted);
+}
+
+/* 名前・役職 */
+.member-card__identity {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.member-card__name {
+    font-family: var(--font-body);
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 700;
+    color: var(--clr-text);
+    letter-spacing: 0.06em;
+}
+.member-card__role {
+    font-size: 11px;
+    color: var(--clr-modern);
+    letter-spacing: 0.12em;
+    line-height: 1.6;
+}
+
+/* リンクボタン群 */
+.member-card__links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    margin-top: 4px;
+}
+.member-link-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 8px 12px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    font-family: var(--font-body);
+    color: var(--clr-text-muted);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--card-radius);
+    transition: color 0.25s, border-color 0.25s, background 0.25s;
+    white-space: nowrap;
+}
+.member-link-btn:hover {
+    color: var(--clr-text);
+    border-color: var(--clr-border-modern);
+    background: rgba(255,255,255,0.04);
+}
+.member-link-btn--accent {
+    border-color: var(--clr-modern-dim);
+    color: var(--clr-modern);
+}
+.member-link-btn--accent:hover {
+    background: var(--clr-modern-dim);
+    border-color: var(--clr-modern);
+    color: #fff;
+}
+
+/* ── Main（右カラム） ── */
+.member-card__main {
+    padding: clamp(24px, 3vw, 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+/* ── セクション共通 ── */
+.member-section__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.member-section__heading-en {
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    color: var(--clr-modern);
+    font-weight: 400;
+}
+.member-section__heading {
+    font-size: clamp(14px, 2vw, 16px);
+    font-weight: 700;
+    color: var(--clr-text);
+    letter-spacing: 0.06em;
+}
+.member-section__text {
+    font-size: clamp(13px, 1.6vw, 15px);
+    line-height: 2;
+    color: var(--clr-text-muted);
+    letter-spacing: 0.04em;
+    margin: 0;
+}
+
+/* ── Works リスト ── */
+.member-works {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.member-work-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 20px;
+    padding: 16px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: var(--card-radius);
+    transition: border-color 0.3s, background 0.3s;
+}
+.member-work-item:hover {
+    border-color: var(--clr-border-modern);
+    background: rgba(255,255,255,0.04);
+}
+.member-work-item__thumb {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: 2px;
+    background: #0d0d0f;
+    align-self: start;
+}
+.member-work-item__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--ease-horror);
+}
+.member-work-item:hover .member-work-item__thumb img {
+    transform: scale(1.05);
+}
+.member-work-item__info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.member-work-item__meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+.member-work-item__year {
+    font-size: 11px;
+    color: var(--clr-text-muted);
+    letter-spacing: 0.1em;
+}
+.member-work-item__badge {
+    font-size: 8px;
+    letter-spacing: 0.25em;
+    padding: 2px 7px;
+    background: var(--clr-modern);
+    color: #fff;
+    border-radius: 2px;
+}
+.member-work-item__title {
+    font-size: clamp(13px, 1.8vw, 16px);
+    font-weight: 700;
+    color: var(--clr-text);
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+    margin: 0;
+}
+.member-work-item__role-label {
+    font-size: 11px;
+    color: var(--clr-modern);
+    letter-spacing: 0.08em;
+    margin: 0;
+}
+.member-work-item__desc {
+    font-size: clamp(12px, 1.5vw, 13px);
+    line-height: 1.8;
+    color: var(--clr-text-muted);
+    margin: 0;
+}
+.member-work-item__link,
+.member-work-item__link-group a {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--clr-modern);
+    border-bottom: 1px solid var(--clr-modern-dim);
+    padding-bottom: 1px;
+    transition: letter-spacing 0.3s, border-color 0.3s;
+    display: inline-block;
+    margin-top: 4px;
+}
+.member-work-item__link:hover,
+.member-work-item__link-group a:hover {
+    letter-spacing: 0.16em;
+    border-color: var(--clr-modern);
+}
+.member-work-item__link-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* ── スキルタグ ── */
+.member-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.member-skills li {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--clr-text-muted);
+    padding: 4px 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px;
+    transition: border-color 0.25s, color 0.25s;
+}
+.member-skills li:hover {
+    border-color: var(--clr-border-modern);
+    color: var(--clr-text);
+}
+
+/* プラットフォームバッジ（style.cssにない場合の補完） */
+.pf-card__platform {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    padding: 2px 7px;
+    border-radius: 2px;
+    text-transform: uppercase;
+}
+.pf-card__platform.steam    { background: rgba(103,193,245,0.15); color: #67c1f5; border: 1px solid rgba(103,193,245,0.3); }
+.pf-card__platform.nintendo { background: rgba(230,0,18,0.12);    color: #e60012; border: 1px solid rgba(230,0,18,0.3); }
+.pf-card__platform.free     { background: rgba(100,200,120,0.12); color: #64c878; border: 1px solid rgba(100,200,120,0.3); }
+
+/* アクティブナビリンク */
+.nav_link--active {
+    color: var(--clr-text) !important;
+    border-left: 2px solid var(--clr-modern);
+    padding-left: 10px;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media screen and (max-width: 720px) {
+    .member-card {
+        grid-template-columns: 1fr;
+    }
+    .member-card__aside {
+        border-right: none;
+        border-bottom: 1px solid var(--clr-border-modern);
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        text-align: left;
+        padding: 20px;
+        gap: 12px;
+    }
+    .member-card__avatar {
+        width: 64px;
+        height: 64px;
+        flex-shrink: 0;
+    }
+    .member-card__identity {
+        flex: 1;
+        min-width: 120px;
+    }
+    .member-card__links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .member-link-btn {
+        flex: 1;
+        min-width: 120px;
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .member-work-item {
+        grid-template-columns: 1fr;
+    }
+    .member-work-item__thumb {
+        aspect-ratio: 16/7;
+    }
+}
