@@ -5,14 +5,16 @@
 
 /* ── CSS Variables ── */
 :root {
-  --clr-bg:         #060608;
+  --clr-bg:         #0e1211;
   --clr-surface:    rgba(10, 10, 14, 0.92);
   --clr-surface-2:  rgba(18, 16, 22, 0.80);
   --clr-accent:     #c0002a;       /* 血赤 */
+  --clr-modern:       #935100;
   --clr-accent-dim: rgba(192, 0, 42, 0.25);
   --clr-text:       #ddd8d0;
-  --clr-text-muted: #6e6a65;
+  --clr-text-muted: #7d7973;
   --clr-border:     rgba(192, 0, 42, 0.30);
+  --clr-border-modern:     rgba(192, 112, 0, 0.3);
   --clr-header-bg:  rgba(6, 6, 8, 0.88);
 
   --font-display: 'Rock 3D', cursive;
