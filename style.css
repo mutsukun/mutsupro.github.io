@@ -161,7 +161,7 @@ button { cursor: pointer; background: none; border: none; }
 /* ── Nav Drawer ── */
 .nav {
   position: fixed;
-  top: var(--header-h);
+  top: 0;
   right: 0;
   bottom: 0;
   width: min(280px, 80vw);
@@ -169,14 +169,17 @@ button { cursor: pointer; background: none; border: none; }
   border-left: 1px solid var(--clr-border);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  padding: 40px 32px;
+  padding-top: calc(var(--header-h) + 32px);
+  padding-right: 32px;
+  padding-bottom: 300px;
+  padding-left: 32px;
   opacity: 0;
   visibility: hidden;
   transform: translateX(20px);
   transition: opacity 0.35s var(--ease-horror),
               visibility 0.35s,
               transform 0.35s var(--ease-horror);
-  z-index: 99;
+  z-index: 101;
 }
 .nav.show {
   opacity: 1;
