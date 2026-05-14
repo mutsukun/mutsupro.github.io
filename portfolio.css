@@ -211,7 +211,7 @@
 .member-section__text {
     font-size: clamp(13px, 1.6vw, 15px);
     line-height: 2;
-    color: var(--clr-text-muted);
+    color: var(--clr-text);
     letter-spacing: 0.04em;
     margin: 0;
 }
